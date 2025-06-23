@@ -7,5 +7,8 @@ import java.util.List;
 public interface ResourceService {
 
     List<Resource> findAllResource();
-
+    Resource findResourceById(Long id);
+    boolean saveResource(Resource body);
+    boolean updateResource(Long id,Resource body);
+    boolean deleteResource(Long id);
 }

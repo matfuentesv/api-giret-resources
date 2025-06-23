@@ -19,4 +19,24 @@ public class ResourceServiceImpl implements ResourceService{
         return recursoRepository.findAllResource();
     }
 
+    @Override
+    public Resource findResourceById(Long id) {
+        return recursoRepository.findResourceById(id);
+    }
+
+    @Override
+    public boolean saveResource(Resource body) {
+        return recursoRepository.saveResource(body);
+    }
+
+    @Override
+    public boolean updateResource(Long id,Resource body) {
+        return recursoRepository.updateResource(id,body);
+    }
+
+    @Override
+    public boolean deleteResource(Long id) {
+        return recursoRepository.deleteResource(id);
+    }
+
 }

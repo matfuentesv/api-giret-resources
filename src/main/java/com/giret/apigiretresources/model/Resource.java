@@ -1,7 +1,5 @@
 package com.giret.apigiretresources.model;
 
-import lombok.Data;
-
 
 public class Resource {
 
@@ -62,7 +60,7 @@ public class Resource {
         this.fechaCompra = fechaCompra;
     }
 
-    public Long getIdEstado() {
+    public long getIdEstado() {
         return idEstado;
     }
 

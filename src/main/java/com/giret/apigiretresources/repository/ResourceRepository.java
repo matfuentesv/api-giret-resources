@@ -1,6 +1,7 @@
 package com.giret.apigiretresources.repository;
 
 import com.giret.apigiretresources.model.Resource;
+import com.giret.apigiretresources.model.States;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -147,6 +148,32 @@ public class ResourceRepository {
             e.printStackTrace();
             return false;
         }
+    }
+
+
+    public List<States> findAllStates() {
+        List<States> states = new ArrayList<>();
+
+        try (Connection conn = dataSource.getConnection();
+             CallableStatement cs = conn.prepareCall("{call SP_GET_ESTADOS(?)}")) {
+
+            cs.registerOutParameter(1, Types.REF_CURSOR);
+            cs.execute();
+
+            try (ResultSet rs = (ResultSet) cs.getObject(1)) {
+                while (rs.next()) {
+                    States state = new States();
+
+                    state.setIdEstado(rs.getLong("ID_ESTADO"));
+                    state.setNombreEstado(rs.getString("NOMBREESTADO"));
+
+                    states.add(state);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return states;
     }
 
 

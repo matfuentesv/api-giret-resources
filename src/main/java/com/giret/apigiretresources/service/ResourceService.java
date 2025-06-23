@@ -1,6 +1,8 @@
 package com.giret.apigiretresources.service;
 
 import com.giret.apigiretresources.model.Resource;
+import com.giret.apigiretresources.model.States;
+
 import java.util.List;
 
 
@@ -11,4 +13,6 @@ public interface ResourceService {
     boolean saveResource(Resource body);
     boolean updateResource(Long id,Resource body);
     boolean deleteResource(Long id);
+
+    List<States> findAllStates();
 }

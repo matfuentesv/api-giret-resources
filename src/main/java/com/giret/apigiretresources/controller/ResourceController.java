@@ -1,6 +1,7 @@
 package com.giret.apigiretresources.controller;
 
 import com.giret.apigiretresources.model.Resource;
+import com.giret.apigiretresources.model.States;
 import com.giret.apigiretresources.service.ResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -39,5 +40,10 @@ public class ResourceController {
     @DeleteMapping("/deleteResource/{id}")
     public ResponseEntity<Boolean> deleteResource(@PathVariable ("id")Long id) {
         return ResponseEntity.ok(resourceService.deleteResource(id));
+    }
+
+    @GetMapping("/findAllState")
+    public ResponseEntity<List<States>> findAllState() {
+        return ResponseEntity.ok(resourceService.findAllStates());
     }
 }

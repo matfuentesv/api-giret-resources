@@ -12,4 +12,8 @@ public interface ResourceService {
     Recurso saveResource(Recurso body);
     Recurso updateResource(Long id, Recurso body);
     Boolean deleteResource(Long id);
+    long countResources();
+    List<Object[]> countByState();
+    List<Recurso> findByState(String state);
+    List<Recurso> searchResource(String term);
 }

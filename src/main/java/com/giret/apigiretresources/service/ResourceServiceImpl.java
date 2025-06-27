@@ -48,6 +48,24 @@ public class ResourceServiceImpl implements ResourceService{
          return true;
     }
 
+    @Override
+    public long countResources() {
+        return resourceRepository.count();
+    }
+
+    @Override
+    public List<Object[]> countByState() {
+        return resourceRepository.countGroupByState();
+    }
+
+    @Override
+    public List<Recurso> findByState(String state) {
+        return resourceRepository.findByEstado(state);
+    }
+    @Override
+    public List<Recurso> searchResource(String term) {
+        return resourceRepository.findByModeloContainingIgnoreCaseOrNumeroSerieContainingIgnoreCase(term, term);
+    }
 
 
 }

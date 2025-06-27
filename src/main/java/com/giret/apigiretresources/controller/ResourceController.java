@@ -41,4 +41,24 @@ public class ResourceController {
         return ResponseEntity.ok(resourceService.deleteResource(id));
     }
 
+    @GetMapping("/resource/count")
+    public ResponseEntity<Long> countResources() {
+        return ResponseEntity.ok(resourceService.countResources());
+    }
+
+    @GetMapping("/resource/countByEstado")
+    public ResponseEntity<List<Object[]>> countByEstado() {
+        return ResponseEntity.ok(resourceService.countByState());
+    }
+
+    @GetMapping("/resource/findByEstado/{estado}")
+    public ResponseEntity<List<Recurso>> findByEstado(@PathVariable String estado) {
+        return ResponseEntity.ok(resourceService.findByState(estado));
+    }
+
+    @GetMapping("/resource/search")
+    public ResponseEntity<List<Recurso>> searchResource(@RequestParam String term) {
+        return ResponseEntity.ok(resourceService.searchResource(term));
+    }
+
 }

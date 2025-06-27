@@ -1,7 +1,7 @@
 com\giret\apigiretresources\controller\ResourceController.class
 com\giret\apigiretresources\repository\ResourceRepository.class
+com\giret\apigiretresources\model\Recurso.class
 com\giret\apigiretresources\service\ResourceServiceImpl.class
-com\giret\apigiretresources\model\Resource.class
 com\giret\apigiretresources\service\ResourceService.class
 com\giret\apigiretresources\ApiGiretResourcesApplication.class
-com\giret\apigiretresources\model\States.class
+com\giret\apigiretresources\model\Recurso$RecursoBuilder.class

@@ -1,7 +1,6 @@
 package com.giret.apigiretresources.controller;
 
-import com.giret.apigiretresources.model.Resource;
-import com.giret.apigiretresources.model.States;
+import com.giret.apigiretresources.model.Recurso;
 import com.giret.apigiretresources.service.ResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,23 +17,23 @@ public class ResourceController {
 
 
     @GetMapping("/findAllResource")
-    public ResponseEntity<List<Resource>> findAllResource() {
+    public ResponseEntity<List<Recurso>> findAllResource() {
         return ResponseEntity.ok(resourceService.findAllResource());
     }
 
     @GetMapping("/findResourceById/{id}")
-    public ResponseEntity<Resource> findResourceById(@PathVariable("id")Long id) {
+    public ResponseEntity<Recurso> findResourceById(@PathVariable("id")Long id) {
         return ResponseEntity.ok(resourceService.findResourceById(id));
     }
 
     @PostMapping("/saveResource")
-    public ResponseEntity<Boolean> saveResource(@RequestBody Resource resource) {
-        return ResponseEntity.ok(resourceService.saveResource(resource));
+    public ResponseEntity<Recurso> saveResource(@RequestBody Recurso recurso) {
+        return ResponseEntity.ok(resourceService.saveResource(recurso));
     }
 
     @PutMapping("/updateResource/{id}")
-    public ResponseEntity<Boolean> updateResource(@PathVariable ("id")Long id, @RequestBody Resource resource) {
-        return ResponseEntity.ok(resourceService.updateResource(id,resource));
+    public ResponseEntity<Recurso> updateResource(@PathVariable ("id")Long id, @RequestBody Recurso recurso) {
+        return ResponseEntity.ok(resourceService.updateResource(id, recurso));
     }
 
     @DeleteMapping("/deleteResource/{id}")
@@ -42,8 +41,4 @@ public class ResourceController {
         return ResponseEntity.ok(resourceService.deleteResource(id));
     }
 
-    @GetMapping("/findAllState")
-    public ResponseEntity<List<States>> findAllState() {
-        return ResponseEntity.ok(resourceService.findAllStates());
-    }
 }

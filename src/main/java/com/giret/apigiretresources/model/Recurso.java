@@ -36,6 +36,10 @@ public class Recurso {
     @JsonProperty("fechaCompra")
     private String fechaCompra;
 
+    @Column(name = "FECHAVENCIMIENTOGARANTIA", length = 50)
+    @JsonProperty("fechaVencimientoGarantia")
+    private String fechaVencimientoGarantia;
+
     @Column(name = "EMAILUSUARIO", nullable = false, length = 50)
     @JsonProperty("emailUsuario")
     private String emailUsuario;

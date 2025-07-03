@@ -4,7 +4,6 @@ import com.giret.apigiretresources.model.Recurso;
 import com.giret.apigiretresources.repository.ResourceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -65,6 +64,16 @@ public class ResourceServiceImpl implements ResourceService{
     @Override
     public List<Recurso> searchResource(String term) {
         return resourceRepository.findByModeloContainingIgnoreCaseOrNumeroSerieContainingIgnoreCase(term, term);
+    }
+
+    @Override
+    public Recurso updateState(Long id, String estado) {
+        int updated = resourceRepository.updateState(id, estado);
+        if (updated == 1) {
+            return resourceRepository.findById(id).orElseThrow(() -> new RuntimeException("No encontrado"));
+        } else {
+            throw new RuntimeException("No se actualizó nada");
+        }
     }
 
 

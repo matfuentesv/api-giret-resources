@@ -61,4 +61,10 @@ public class ResourceController {
         return ResponseEntity.ok(resourceService.searchResource(term));
     }
 
+    @PutMapping("/updateResourceByState/{id}/{state}")
+    public ResponseEntity<Recurso> updateResource(@PathVariable ("id")Long id,
+                                                  @PathVariable ("state")String state) {
+        return ResponseEntity.ok(resourceService.updateState(id,state));
+    }
+
 }

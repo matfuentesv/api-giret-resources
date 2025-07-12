@@ -1,8 +1,7 @@
-package com.giret.apigiretresources.controller;
+package com.giret.apigiretresources.service;
 
 import com.giret.apigiretresources.model.Recurso;
 import com.giret.apigiretresources.repository.ResourceRepository;
-import com.giret.apigiretresources.service.ResourceServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

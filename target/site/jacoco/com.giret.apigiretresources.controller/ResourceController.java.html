@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ResourceController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">api-giret-resources</a> &gt; <a href="index.source.html" class="el_package">com.giret.apigiretresources.controller</a> &gt; <span class="el_source">ResourceController.java</span></div><h1>ResourceController.java</h1><pre class="source lang-java linenums">package com.giret.apigiretresources.controller;
+
+import com.giret.apigiretresources.model.Recurso;
+import com.giret.apigiretresources.service.ResourceService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping(&quot;/api&quot;)
+<span class="fc" id="L13">public class ResourceController {</span>
+
+    @Autowired
+    ResourceService resourceService;
+
+
+    @GetMapping(&quot;/findAllResource&quot;)
+    public ResponseEntity&lt;List&lt;Recurso&gt;&gt; findAllResource() {
+<span class="fc" id="L21">        return ResponseEntity.ok(resourceService.findAllResource());</span>
+    }
+
+    @GetMapping(&quot;/findResourceById/{id}&quot;)
+    public ResponseEntity&lt;Recurso&gt; findResourceById(@PathVariable(&quot;id&quot;)Long id) {
+<span class="fc" id="L26">        return ResponseEntity.ok(resourceService.findResourceById(id));</span>
+    }
+
+    @PostMapping(&quot;/saveResource&quot;)
+    public ResponseEntity&lt;Recurso&gt; saveResource(@RequestBody Recurso recurso) {
+<span class="fc" id="L31">        return ResponseEntity.ok(resourceService.saveResource(recurso));</span>
+    }
+
+    @PutMapping(&quot;/updateResource/{id}&quot;)
+    public ResponseEntity&lt;Recurso&gt; updateResource(@PathVariable (&quot;id&quot;)Long id, @RequestBody Recurso recurso) {
+<span class="fc" id="L36">        return ResponseEntity.ok(resourceService.updateResource(id, recurso));</span>
+    }
+
+    @DeleteMapping(&quot;/deleteResource/{id}&quot;)
+    public ResponseEntity&lt;Boolean&gt; deleteResource(@PathVariable (&quot;id&quot;)Long id) {
+<span class="fc" id="L41">        return ResponseEntity.ok(resourceService.deleteResource(id));</span>
+    }
+
+    @GetMapping(&quot;/resource/count&quot;)
+    public ResponseEntity&lt;Long&gt; countResources() {
+<span class="fc" id="L46">        return ResponseEntity.ok(resourceService.countResources());</span>
+    }
+
+    @GetMapping(&quot;/resource/countByEstado&quot;)
+    public ResponseEntity&lt;List&lt;Object[]&gt;&gt; countByEstado() {
+<span class="fc" id="L51">        return ResponseEntity.ok(resourceService.countByState());</span>
+    }
+
+    @GetMapping(&quot;/resource/findByEstado/{estado}&quot;)
+    public ResponseEntity&lt;List&lt;Recurso&gt;&gt; findByEstado(@PathVariable String estado) {
+<span class="fc" id="L56">        return ResponseEntity.ok(resourceService.findByState(estado));</span>
+    }
+
+    @GetMapping(&quot;/resource/search&quot;)
+    public ResponseEntity&lt;List&lt;Recurso&gt;&gt; searchResource(@RequestParam String term) {
+<span class="fc" id="L61">        return ResponseEntity.ok(resourceService.searchResource(term));</span>
+    }
+
+    @PutMapping(&quot;/updateResourceByState/{id}/{state}&quot;)
+    public ResponseEntity&lt;Recurso&gt; updateResource(@PathVariable (&quot;id&quot;)Long id,
+                                                  @PathVariable (&quot;state&quot;)String state) {
+<span class="fc" id="L67">        return ResponseEntity.ok(resourceService.updateState(id,state));</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
